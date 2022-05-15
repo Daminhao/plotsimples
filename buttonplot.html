@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  <py-env>
+- matplotlib
+</py-env>
+</head>
+
+<body>
+  <center>
+    <h1>TECAAP</h1>
+    <br>
+    <br>
+  <button 
+  id="submit-button" 
+  type="submit" 
+  class="p-2 text-white bg-blue-600 border border-blue-600 rounded" 
+  pys-onClick="my_function"> Mostrar Plot
+  </button>
+  <div id="test-output"></div>
+
+<py-script>
+  import matplotlib.pyplot as plt
+  from js import console
+
+  def my_function(*args, **kwargs):
+
+    fig, ax = plt.subplots()
+    
+    year_1 = [0, 1, 2, 3, 4, 5, 6, 7, 8,]
+    population_1 = [26.0, 59.5, 105.4, 200.0, 239.5, 364.3, 421.7, 476.0, 488.2]
+    
+    
+    plt.plot(year_1, population_1, marker='o', color='blue', label='Peso')
+    
+    
+    plt.xlabel('Tempo(Meses)')
+    plt.ylabel('Peso Médio(g)')
+    plt.title(' Dados da média de peso Tilápias do Nilo durante 8 meses ')
+    plt.legend(loc='lower right')
+    
+    ax.grid(color='#2A3459')
+    
+    pyscript.write('test-output', fig)
+</py-script>
+  </center>
+  </body>
+</html>
